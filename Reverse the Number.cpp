@@ -1,4 +1,5 @@
- #include<iostream>
+// Not work if last two digits are 00 (Ex. 1500) [Corner Condition] 
+#include<iostream>
  using namespace std;
  
  int main(){
