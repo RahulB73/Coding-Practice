@@ -1,27 +1,36 @@
-#include<iostream>
+// Inheritance in c++
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 using namespace std;
 
-class A{
+
+class Triangle{
     public:
-    int x;
-    
-    int getData(int a){
-        x=a;
-        return x;
-    }
+    	void triangle(){
+     		cout<<"I am a triangle\n";
+    	}
 };
 
-class B:public A{
+class Isosceles : public Triangle{
     public:
-    int displayData(){
-        cout<<x;
-    }
+    	void isosceles(){
+    		cout<<"I am an isosceles triangle\n";
+    	}
+  		void description();
 };
+
+void Isosceles::description(){
+    cout<<"In an isosceles triangle two sides are equal"<<endl;
+} 
 
 int main(){
-    A Obj;
-    Obj.getData(5);
-    Obj.displayData();
+    Isosceles isc;
+    isc.isosceles();
+  	isc.description();
+    isc.triangle();
     return 0;
 }
-
