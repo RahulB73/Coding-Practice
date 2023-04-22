@@ -1,20 +1,40 @@
 // Exception Handling in c++
 
-#include<iostream>
-#include<exception>
+#include <iostream>
+#include <stdexcept>
+
 using namespace std;
 
-int main(){
-    int a=10;
-    int b=0;
-    try{
-        if(b == 0){
-            throw "Devide by zero exception";
-        }
-    int c = a/b;
-    cout<<c;
-    } catch(const char *e){
-        cout<<"Exception Case 101 : "<<e;
+int largest_proper_divisor(int n) {
+    if (n == 0) {
+        throw invalid_argument("largest proper divisor is not defined for n=0");
     }
+    if (n == 1) {
+        throw invalid_argument("largest proper divisor is not defined for n=1");
+    }
+    for (int i = n/2; i >= 1; --i) {
+        if (n % i == 0) {
+            return i;
+        }
+    }
+    return -1; // will never happen
+}
+
+void process_input(int n) {
+    try{
+    int d = largest_proper_divisor(n);
+    cout << "result=" << d << endl;
+    }catch(std::invalid_argument &e){
+        cout<<e.what()<<endl;
+    }
+    cout<<"returning control flow to caller";
+    
+}
+
+
+int main() {
+    int n;
+    cin >> n;
+    process_input(n);
     return 0;
 }
